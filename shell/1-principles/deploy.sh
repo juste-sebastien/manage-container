@@ -11,27 +11,35 @@
 ####################################################
 
 
-# if option --create
+# if option --create, create docker container
 if [ "$1" == "--create" ];then
-  
+
   echo -e "\n--create run\n"
 
-# if option drop
+  total_engine=1
+  [ "$2" != "" ] && total_engine=$2
+  docker run -tid --name $USER-alpine alpine:latest
+
+  echo "${total_engine} was create"
+
+# if option --drop, remove docker container
 elif [ "$1" == "--drop" ];then
-  
+
   echo -e "\n--drop run\n"
 
-# if option start
+  docker rm -f $USER-alpine
+
+# if option --start, run docker container
 elif [ "$1" == "--start" ];then
 
   echo -e "\n--start run\n"
 
-# if option info
+# if option --info
 elif [ "$1" == "--info" ];then
 
   echo -e "\n--infos run\n"
 
-# if option ansible
+# if option --ansible
 elif [ "$1" == "--ansible" ];then
 
   echo -e "\n--ansible run\n"
