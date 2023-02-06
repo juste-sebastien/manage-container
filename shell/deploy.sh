@@ -15,19 +15,23 @@
 if [ "$1" == "--create" ];then
 
   echo -e "\n--create run\n"
-
+  # define total container number
   total_engine=1
   [ "$2" != "" ] && total_engine=$2
-  docker run -tid --name $USER-alpine alpine:latest
 
-  echo "${total_engine} was create"
+  # creation of container
+  echo -e "\nStart container('s) creation\n"
+  for i in $(seq 1 $total_engine);do
+    docker run -tid --name $USER-alpine-$i alpine:latest
+    echo "${USER-alpine-$i} was created"
+  done
 
 # if option --drop, remove docker container
 elif [ "$1" == "--drop" ];then
 
-  echo -e "\n--drop run\n"
-
-  docker rm -f $USER-alpine
+  # deleting containers
+  echo -e "\nDeleting all containers created\n"
+  docker rm -f $(docker ps -a | grep $USER-alpine | awk '{print $1}')
 
 # if option --start, run docker container
 elif [ "$1" == "--start" ];then
@@ -49,7 +53,7 @@ else
 
   echo "
 Usages:
-    - --create: run container
+    - --create [number of container]: create n container
     - --drop: delete container create by deploy.sh
     - --info: get container information (ip, name, user...)
     - --start: restart container
