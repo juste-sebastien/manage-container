@@ -14,37 +14,27 @@
 # if option --create
 if [ "$1" == "--create" ];then
   
-  echo ""
-  echo "--create run"
-  echo ""
+  echo -e "\n--create run\n"
 
 # if option drop
 elif [ "$1" == "--drop" ];then
   
-  echo ""
-  echo "--drop run"
-  echo ""
+  echo -e "\n--drop run\n"
 
 # if option start
 elif [ "$1" == "--start" ];then
 
-  echo ""
-  echo "--start run"
-  echo ""
+  echo -e "\n--start run\n"
 
 # if option info
 elif [ "$1" == "--info" ];then
 
-  echo ""
-  echo "--infos run"
-  echo ""
+  echo -e "\n--infos run\n"
 
 # if option ansible
 elif [ "$1" == "--ansible" ];then
 
-  echo ""
-  echo "--ansible run"
-  echo ""
+  echo -e "\n--ansible run\n"
 
 # if not given option, display help
 else
